@@ -4,10 +4,18 @@
 
 using namespace std;
 
-void makeFirstOne(vector<vector<double>>& table, int row);
+void printMatrix(vector<vector<double>> &vector);
+
+bool makeFirstOne(vector<vector<double>>& table, int row);
 
 void makeZerosInCol(vector<vector<double>> &table, int col);
 
-void makeDiagonal(vector<vector<double>> &table);
+bool makeDiagonal(vector<vector<double>> &table);
 
-double* calculate(vector<vector<double>>& table);
+vector<double> calculate(const vector<vector<double>>& table);
+
+vector<double> solve(const vector<vector<double>>& table);
+
+vector<double> residual_vec(const vector<vector<double>>& table, const vector<double>& ans);
+
+vector<double> my_ans(const vector<vector<double>>& table, const vector<double>& ans);
