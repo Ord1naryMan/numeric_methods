@@ -42,7 +42,8 @@ newtonMethod(
         double e2,
         int NIT,
         double M,
-        vector<vector<double>> (&jacobian_calc)(vector<double>, double)
+        vector<vector<double>> (&jacobian_calc)(vector<double>, double),
+        bool isShowSteps
 ) {
     vector<double> result;
     vector<double> x {x1, x2};
@@ -133,22 +134,22 @@ vector<vector<double>> jacobian2(vector<double> x, double M) {
     double f1_x = f1(x[0], x[1]);
     double f2_x = f2(x[0], x[1]);
 
-    vector<double> h(x);
+    vector<double> dx(x);
 
     for (int i = 0; i < x.size(); i++) {
-        h[i] *= M;
+        dx[i] *= M;
     }
 
     vector<double> jacobian_row{
-            (f1(x[0] + h[0], x[1]) - f1_x) / h[0],
-            (f1(x[0], x[1] + h[1]) - f1_x) / h[1]
+            (f1(x[0] + dx[0], x[1]) - f1_x) / dx[0],
+            (f1(x[0], x[1] + dx[1]) - f1_x) / dx[1]
     };
     jacobian.push_back(jacobian_row);
 
     jacobian_row.clear();
     jacobian_row = {
-            (f2(x[0] + h[0], x[1]) - f2_x) / h[0],
-            (f2(x[0], x[1] + h[1]) - f2_x) / h[1]
+            (f2(x[0] + dx[0], x[1]) - f2_x) / dx[0],
+            (f2(x[0], x[1] + dx[1]) - f2_x) / dx[1]
     };
     jacobian.push_back(jacobian_row);
 

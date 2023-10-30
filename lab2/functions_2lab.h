@@ -8,8 +8,6 @@
 
 using namespace std;
 
-bool isShowSteps;
-
 double f1(double x1, double x2);
 
 double f2(double x1, double x2);
@@ -31,7 +29,8 @@ vector<double> newtonMethod(
         double e2,
         int NIT,
         double M,
-        vector<vector<double>> (&jacobian_calc)(vector<double>, double)
+        vector<vector<double>> (&jacobian_calc)(vector<double>, double),
+        bool isShowSteps
 );
 
 vector<vector<double>> jacobian1(vector<double> x, double M);
