@@ -3,7 +3,7 @@
 double trapezoid::do_mid_calculations(
         double (&fun)(const double&),
         const double& a, const double& b,
-        const double& n) {
+        const int& n) {
     double h = (b - a) / n;
     double mid_sum = 0;
     for (int i = 1; i < n - 1; i++) {
@@ -15,7 +15,7 @@ double trapezoid::do_mid_calculations(
 
 double trapezoid::solve_integral(double (&fun)(const double&),
                       const double& a, const double& b,
-                      const int& eps) {
+                      const double& eps) {
     int n = 10;
     double prev_integral_result = 0;
     double cur_integral_result = do_mid_calculations(fun, a, b, n);
